@@ -1,6 +1,8 @@
 import nibabel as nib
 import numpy as np
 import pyvista as pv
+import os
+
 
 # Create a default PyVista Plotter to inspect the default light settings
 plotter = pv.Plotter()
@@ -113,8 +115,11 @@ def main():
     optionally smoothing it, and visualizing the result.
     """
     # 1. Load the scalar volume from the NIfTI file (e.g., 'brain-map.nii.gz')
-    file_path = "/Users/zhang/PycharmProjects/BeginwithPyvista/Dataset/brain-map.nii.gz"
-    spacing = (1.0, 1.0, 1.0)  # Adjust if your dataset has different voxel sizes
+    # Get relative pathS
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, "Dataset", "brain-map.nii.gz")
+
+    spacing = (1.0, 1.0, 1.0)  # Adjust if the dataset has different voxel sizes
     origin = (0.0, 0.0, 0.0)  # The (x, y, z) origin for the volume
 
     grid, data = load_scalar_volume(file_path, spacing, origin)
