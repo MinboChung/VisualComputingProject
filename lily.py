@@ -25,7 +25,7 @@ reader_fa = read_file(file_path_fa)
 
 # 获取数据范围并设定合适的 iso_value
 scalar_range_fa = reader_fa.GetOutput().GetScalarRange()
-iso_value_fa = 0.5  # 适合 FA 数据范围
+iso_value_fa = 0.1  # 适合 FA 数据范围
 print(f"Scalar Range (fa): {scalar_range_fa}, Using iso_value: {iso_value_fa}")
 
 # Marching Cubes 提取 FA 数据的等值面
