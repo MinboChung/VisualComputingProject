@@ -66,19 +66,27 @@ edges = largest_component.extract_all_edges()
 
 # **渲染**
 plotter = pv.Plotter()
-plotter.set_background("black")
+plotter.set_background("white")
 
 plotter.add_mesh(
     largest_component,
     # scalars=toon_colors, 
     # rgb=True,
-    color="lightblue",      # 物体颜色
+    # color="lightblue",      # 物体颜色
+    # style='wireframe',
     smooth_shading=True,    # 开启平滑着色
     specular=1.0,           # 镜面反射强度
     specular_power=50.0,    # 镜面高光锐度（数值越高，高光越小越亮）
     ambient=0.2,            # 环境光
     diffuse=0.8         ,    # 漫反射
+    multi_colors=True,
+    clim=[-1, 0],
+    below_color="lightblue",
+    above_color="blue"
 )
 
-# plotter.add_mesh(edges, color="orange", line_width=2)
+plotter.add_mesh(edges, 
+    color="black",
+    line_width=1,
+    opacity=0.5)
 plotter.show()
